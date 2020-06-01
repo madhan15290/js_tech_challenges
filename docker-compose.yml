@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  simple_app:
+    build: .
+    #Give a name to docker contianer
+    container_name: simple_app
+    #mount volume for app files (node-restful-api-tutorial)
+    #volumes:
+    # - ./node-restful-api-tutorial:/opt/simple_app
+    #Host and Container ports (Port forwarding)
+    ports:
+      - 8080:3000
+    #restart policy: Always restart the container (Other Flags: no, on-failure, unless-stopped)
+    restart: always
+
