@@ -1,0 +1,35 @@
+Describe how you would monitor this application e.g metrics you would track and thresholds you would report on.
+
+Using Amazon Cloudwatch or other monitoring stack collect the metrics and pushing it thorugh a datasource to showcase in Grafana dashboard.
+
+Monitor the following:
+1. CPU
+2. Memory
+3. Disk
+4. N/W Latency
+5. Compliance (Operating systems)
+6. Application avialability
+7. App/service error rates
+8. Application response time and throughput
+9. EKS clusters health
+
+Application can have a threshold defined for the expected data throughput rate. If it falls below a specified threshold, we can generate alerts.
+
+Get the healthcheck metrics of all the containers by pod, namespace and nodes. Depending on service we need some of the following health checks/probes:
+
+Health Check:
+1. https://serviceFqdn/servicePath/readiness: this is determine when to route traffic to node 
+2. https://serviceFqdn/servicePath/liveness: this is to determine when to restart the container
+3. https://serviceFqdn/servicePath/startup: How long to wait before the liveness probe kicks in. If your container takes very long (minutes) to startup, use this!
+4. https://serviceFqdn/servicePath/diagnostic: This can present deep diagnostic info to help in troubleshooting. Run manually when problems are found on live systems. 
+
+Following are recommendations/best practices for health probes:
+1. All health checks will be http endpoints returning a json payload. A return code of 200 to 299 is normal. Anything else will be treated as a failure.
+2. All health checks are NOT accessible externally on the internet (for internal use only).
+3. On application startup, the application should be warmed up and a static boolean variable say "AppIsReady" should be set to true
+4. Readiness probe should be lightweight and hit every 10 seconds (default) and should ensure AppIsReady is true (that is app is warmed up).
+5. Liveness probe checks for those things where a container restart may help. Hence do NOT check external dependencies here.
+6. We should be configured to get alerts if the readiness probe is down for an extended duration
+7. Be mindful that slow latent environments do not make your probes fail unnecessarily resulting in a service outage.
+8. Be mindful that one node's check failing does not lead to a cascading effect making another node's check fail e.g. Node1 readiness probe fails resulting in all traffic going to Node2 overwhelming it and resulting in that node's probe failing too.
+9. Do not check external service probes in your liveness probe otherwise you will result in cascading failure e.g. serviceA is down because it checks for serviceB readiness page and serviceB is down because it checks serviceA.

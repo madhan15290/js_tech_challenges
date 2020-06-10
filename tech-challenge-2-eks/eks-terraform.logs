@@ -1,0 +1,853 @@
+$ terraform apply
+module.js_eks_cluster.data.aws_partition.current: Refreshing state...
+module.js_eks_cluster.data.aws_ami.eks_worker: Refreshing state...
+aws_security_group.js_clus_small_sg: Refreshing state... [id=sg-0352af9c1aca3be21]
+module.vpc.aws_vpc.this[0]: Refreshing state... [id=vpc-050cc1ee952e793ee]
+aws_security_group.js_clus_medium_sg: Refreshing state... [id=sg-074e1b7d1913bde92]
+data.aws_availability_zones.available: Refreshing state...
+module.js_eks_cluster.data.aws_caller_identity.current: Refreshing state...
+module.js_eks_cluster.data.aws_iam_policy_document.cluster_assume_role_policy: Refreshing state...
+module.js_eks_cluster.data.aws_ami.eks_worker_windows: Refreshing state...
+module.js_eks_cluster.data.aws_iam_policy_document.workers_assume_role_policy: Refreshing state...
+module.js_eks_cluster.aws_iam_role.cluster[0]: Refreshing state... [id=js_eks_cluster20200609071957632300000001]
+module.vpc.aws_eip.nat[0]: Refreshing state... [id=eipalloc-06b35393477f36355]
+module.vpc.aws_route_table.private[0]: Refreshing state... [id=rtb-0cf44fe20f76755a3]
+aws_security_group.js_clus_allow_all: Refreshing state... [id=sg-05e56b41d31aab4df]
+aws_security_group.js_clus_small_sg: Refreshing state... [id=sg-06e7b6fead2d0a4ef]
+aws_security_group.js_clus_medium_sg: Refreshing state... [id=sg-0885323232d6e0a82]
+module.vpc.aws_internet_gateway.this[0]: Refreshing state... [id=igw-00b419ffd0b8d5fe7]
+module.vpc.aws_subnet.public[0]: Refreshing state... [id=subnet-00f0c4e9041db1a30]
+module.vpc.aws_subnet.public[1]: Refreshing state... [id=subnet-07d5fd3f7201bce9b]
+module.vpc.aws_subnet.private[1]: Refreshing state... [id=subnet-08328e60d3df7251d]
+module.vpc.aws_subnet.private[0]: Refreshing state... [id=subnet-04bafe8db36660cca]
+module.vpc.aws_route_table.public[0]: Refreshing state... [id=rtb-0d4e2b921a41e95dc]
+module.js_eks_cluster.aws_security_group.cluster[0]: Refreshing state... [id=sg-000cb647d2612ba5d]
+module.vpc.aws_nat_gateway.this[0]: Refreshing state... [id=nat-0cd73874c371331ac]
+module.vpc.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0f6fa2c92411e780c]
+module.vpc.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-099c6a90fbb2180b4]
+module.vpc.aws_route.public_internet_gateway[0]: Refreshing state... [id=r-rtb-0d4e2b921a41e95dc1080289494]
+module.vpc.aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-018e765f44569934a]
+module.vpc.aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-0c4c9ec3676b802a8]
+module.vpc.aws_route.private_nat_gateway[0]: Refreshing state... [id=r-rtb-0cf44fe20f76755a31080289494]
+module.js_eks_cluster.aws_security_group_rule.cluster_egress_internet[0]: Refreshing state... [id=sgrule-2002560938]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+  - destroy
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.aws_eks_cluster.js_eks_cluster will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_eks_cluster" "js_eks_cluster"  {
+      + arn                       = (known after apply)
+      + certificate_authority     = (known after apply)
+      + created_at                = (known after apply)
+      + enabled_cluster_log_types = (known after apply)
+      + endpoint                  = (known after apply)
+      + id                        = (known after apply)
+      + identity                  = (known after apply)
+      + name                      = (known after apply)
+      + platform_version          = (known after apply)
+      + role_arn                  = (known after apply)
+      + status                    = (known after apply)
+      + tags                      = (known after apply)
+      + version                   = (known after apply)
+      + vpc_config                = (known after apply)
+    }
+
+  # data.aws_eks_cluster_auth.js_eks_cluster will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_eks_cluster_auth" "js_eks_cluster"  {
+      + id    = (known after apply)
+      + name  = (known after apply)
+      + token = (sensitive value)
+    }
+
+  # aws_security_group.js_clus_medium_sg (deposed object ba5b9523) will be destroyed
+  - resource "aws_security_group" "js_clus_medium_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:842220500251:security-group/sg-074e1b7d1913bde92" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [] -> null
+      - id                     = "sg-074e1b7d1913bde92" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "10.234.2.0/24",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "js_clus_medium_sg20200609070749112200000003" -> null
+      - name_prefix            = "js_clus_medium_sg" -> null
+      - owner_id               = "842220500251" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - vpc_id                 = "vpc-050cc1ee952e793ee" -> null
+    }
+
+  # aws_security_group.js_clus_small_sg (deposed object 3052408a) will be destroyed
+  - resource "aws_security_group" "js_clus_small_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:842220500251:security-group/sg-0352af9c1aca3be21" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [] -> null
+      - id                     = "sg-0352af9c1aca3be21" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "10.234.1.0/24",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "js_clus_small_sg20200609070749112200000002" -> null
+      - name_prefix            = "js_clus_small_sg" -> null
+      - owner_id               = "842220500251" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - vpc_id                 = "vpc-050cc1ee952e793ee" -> null
+    }
+
+  # module.js_eks_cluster.data.null_data_source.node_groups[0] will be read during apply
+  # (config refers to values not yet known)
+ <= data "null_data_source" "node_groups"  {
+      + has_computed_default = (known after apply)
+      + id                   = (known after apply)
+      + inputs               = {
+          + "aws_auth"        = (known after apply)
+          + "cluster_name"    = "js_eks_cluster"
+          + "role_CNI_Policy" = (known after apply)
+          + "role_Container"  = (known after apply)
+          + "role_NodePolicy" = (known after apply)
+        }
+      + outputs              = (known after apply)
+      + random               = (known after apply)
+    }
+
+  # module.js_eks_cluster.data.template_file.userdata[0] will be read during apply
+  # (config refers to values not yet known)
+ <= data "template_file" "userdata"  {
+      + id       = (known after apply)
+      + rendered = (known after apply)
+      + template = <<~EOT
+            #!/bin/bash -xe
+
+            # Allow user supplied pre userdata code
+            ${pre_userdata}
+
+            # Bootstrap and join the cluster
+            /etc/eks/bootstrap.sh --b64-cluster-ca '${cluster_auth_base64}' --apiserver-endpoint '${endpoint}' ${bootstrap_extra_args} --kubelet-extra-args "${kubelet_extra_args}" '${cluster_name}'
+
+            # Allow user supplied userdata code
+            ${additional_userdata}
+        EOT
+      + vars     = (known after apply)
+    }
+
+  # module.js_eks_cluster.data.template_file.userdata[1] will be read during apply
+  # (config refers to values not yet known)
+ <= data "template_file" "userdata"  {
+      + id       = (known after apply)
+      + rendered = (known after apply)
+      + template = <<~EOT
+            #!/bin/bash -xe
+
+            # Allow user supplied pre userdata code
+            ${pre_userdata}
+
+            # Bootstrap and join the cluster
+            /etc/eks/bootstrap.sh --b64-cluster-ca '${cluster_auth_base64}' --apiserver-endpoint '${endpoint}' ${bootstrap_extra_args} --kubelet-extra-args "${kubelet_extra_args}" '${cluster_name}'
+
+            # Allow user supplied userdata code
+            ${additional_userdata}
+        EOT
+      + vars     = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_autoscaling_group.workers[0] will be created
+  + resource "aws_autoscaling_group" "workers" {
+      + arn                       = (known after apply)
+      + availability_zones        = (known after apply)
+      + default_cooldown          = (known after apply)
+      + desired_capacity          = 2
+      + force_delete              = false
+      + health_check_grace_period = 300
+      + health_check_type         = (known after apply)
+      + id                        = (known after apply)
+      + launch_configuration      = (known after apply)
+      + load_balancers            = (known after apply)
+      + max_instance_lifetime     = 0
+      + max_size                  = 5
+      + metrics_granularity       = "1Minute"
+      + min_size                  = 1
+      + name                      = (known after apply)
+      + name_prefix               = "js_eks_cluster-js-clus-small"
+      + protect_from_scale_in     = false
+      + service_linked_role_arn   = (known after apply)
+      + suspended_processes       = [
+          + "AZRebalance",
+        ]
+      + tags                      = [
+          + {
+              + "key"                 = "Name"
+              + "propagate_at_launch" = "true"
+              + "value"               = "js_eks_cluster-js-clus-small-eks_asg"
+            },
+          + {
+              + "key"                 = "cluster_id"
+              + "propagate_at_launch" = "true"
+              + "value"               = "1234"
+            },
+          + {
+              + "key"                 = "email"
+              + "propagate_at_launch" = "true"
+              + "value"               = "madhan.rajendran@junglescout.com"
+            },
+          + {
+              + "key"                 = "environment"
+              + "propagate_at_launch" = "true"
+              + "value"               = "devops-dev01"
+            },
+          + {
+              + "key"                 = "k8s.io/cluster/js_eks_cluster"
+              + "propagate_at_launch" = "true"
+              + "value"               = "owned"
+            },
+          + {
+              + "key"                 = "kubernetes.io/cluster/js_eks_cluster"
+              + "propagate_at_launch" = "true"
+              + "value"               = "owned"
+            },
+          + {
+              + "key"                 = "owner"
+              + "propagate_at_launch" = "true"
+              + "value"               = "madhan_rajendran"
+            },
+          + {
+              + "key"                 = "region"
+              + "propagate_at_launch" = "true"
+              + "value"               = "us-east-1"
+            },
+        ]
+      + target_group_arns         = (known after apply)
+      + termination_policies      = []
+      + vpc_zone_identifier       = [
+          + "subnet-04bafe8db36660cca",
+          + "subnet-08328e60d3df7251d",
+        ]
+      + wait_for_capacity_timeout = "10m"
+    }
+
+  # module.js_eks_cluster.aws_autoscaling_group.workers[1] will be created
+  + resource "aws_autoscaling_group" "workers" {
+      + arn                       = (known after apply)
+      + availability_zones        = (known after apply)
+      + default_cooldown          = (known after apply)
+      + desired_capacity          = 1
+      + force_delete              = false
+      + health_check_grace_period = 300
+      + health_check_type         = (known after apply)
+      + id                        = (known after apply)
+      + launch_configuration      = (known after apply)
+      + load_balancers            = (known after apply)
+      + max_instance_lifetime     = 0
+      + max_size                  = 3
+      + metrics_granularity       = "1Minute"
+      + min_size                  = 1
+      + name                      = (known after apply)
+      + name_prefix               = "js_eks_cluster-js-clus-medium"
+      + protect_from_scale_in     = false
+      + service_linked_role_arn   = (known after apply)
+      + suspended_processes       = [
+          + "AZRebalance",
+        ]
+      + tags                      = [
+          + {
+              + "key"                 = "Name"
+              + "propagate_at_launch" = "true"
+              + "value"               = "js_eks_cluster-js-clus-medium-eks_asg"
+            },
+          + {
+              + "key"                 = "cluster_id"
+              + "propagate_at_launch" = "true"
+              + "value"               = "1234"
+            },
+          + {
+              + "key"                 = "email"
+              + "propagate_at_launch" = "true"
+              + "value"               = "madhan.rajendran@junglescout.com"
+            },
+          + {
+              + "key"                 = "environment"
+              + "propagate_at_launch" = "true"
+              + "value"               = "devops-dev01"
+            },
+          + {
+              + "key"                 = "k8s.io/cluster/js_eks_cluster"
+              + "propagate_at_launch" = "true"
+              + "value"               = "owned"
+            },
+          + {
+              + "key"                 = "kubernetes.io/cluster/js_eks_cluster"
+              + "propagate_at_launch" = "true"
+              + "value"               = "owned"
+            },
+          + {
+              + "key"                 = "owner"
+              + "propagate_at_launch" = "true"
+              + "value"               = "madhan_rajendran"
+            },
+          + {
+              + "key"                 = "region"
+              + "propagate_at_launch" = "true"
+              + "value"               = "us-east-1"
+            },
+        ]
+      + target_group_arns         = (known after apply)
+      + termination_policies      = []
+      + vpc_zone_identifier       = [
+          + "subnet-04bafe8db36660cca",
+          + "subnet-08328e60d3df7251d",
+        ]
+      + wait_for_capacity_timeout = "10m"
+    }
+
+  # module.js_eks_cluster.aws_eks_cluster.this[0] will be created
+  + resource "aws_eks_cluster" "this" {
+      + arn                   = (known after apply)
+      + certificate_authority = (known after apply)
+      + created_at            = (known after apply)
+      + endpoint              = (known after apply)
+      + id                    = (known after apply)
+      + identity              = (known after apply)
+      + name                  = "js_eks_cluster"
+      + platform_version      = (known after apply)
+      + role_arn              = "arn:aws:iam::842220500251:role/js_eks_cluster20200609071957632300000001"
+      + status                = (known after apply)
+      + tags                  = {
+          + "cluster_id"  = "1234"
+          + "email"       = "madhan.rajendran@junglescout.com"
+          + "environment" = "devops-dev01"
+          + "owner"       = "madhan_rajendran"
+          + "region"      = "us-east-1"
+        }
+      + version               = "1.16"
+
+      + timeouts {
+          + create = "30m"
+          + delete = "15m"
+        }
+
+      + vpc_config {
+          + cluster_security_group_id = (known after apply)
+          + endpoint_private_access   = false
+          + endpoint_public_access    = true
+          + public_access_cidrs       = [
+              + "0.0.0.0/0",
+            ]
+          + security_group_ids        = [
+              + "sg-000cb647d2612ba5d",
+            ]
+          + subnet_ids                = [
+              + "subnet-04bafe8db36660cca",
+              + "subnet-08328e60d3df7251d",
+            ]
+          + vpc_id                    = (known after apply)
+        }
+    }
+
+  # module.js_eks_cluster.aws_iam_instance_profile.workers[0] will be created
+  + resource "aws_iam_instance_profile" "workers" {
+      + arn         = (known after apply)
+      + create_date = (known after apply)
+      + id          = (known after apply)
+      + name        = (known after apply)
+      + name_prefix = "js_eks_cluster"
+      + path        = "/"
+      + role        = (known after apply)
+      + roles       = (known after apply)
+      + unique_id   = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_iam_instance_profile.workers[1] will be created
+  + resource "aws_iam_instance_profile" "workers" {
+      + arn         = (known after apply)
+      + create_date = (known after apply)
+      + id          = (known after apply)
+      + name        = (known after apply)
+      + name_prefix = "js_eks_cluster"
+      + path        = "/"
+      + role        = (known after apply)
+      + roles       = (known after apply)
+      + unique_id   = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_iam_role.cluster[0] will be updated in-place
+  ~ resource "aws_iam_role" "cluster" {
+        arn                   = "arn:aws:iam::842220500251:role/js_eks_cluster20200609071957632300000001"
+        assume_role_policy    = jsonencode(
+            {
+                Statement = [
+                    {
+                        Action    = "sts:AssumeRole"
+                        Effect    = "Allow"
+                        Principal = {
+                            Service = "eks.amazonaws.com"
+                        }
+                        Sid       = "EKSClusterAssumeRole"
+                    },
+                ]
+                Version   = "2012-10-17"
+            }
+        )
+        create_date           = "2020-06-09T07:19:57Z"
+        force_detach_policies = true
+        id                    = "js_eks_cluster20200609071957632300000001"
+        max_session_duration  = 3600
+        name                  = "js_eks_cluster20200609071957632300000001"
+        name_prefix           = "js_eks_cluster"
+        path                  = "/"
+      ~ tags                  = {
+          + "cluster_id"  = "1234"
+          + "email"       = "madhan.rajendran@junglescout.com"
+          + "environment" = "devops-dev01"
+          + "owner"       = "madhan_rajendran"
+          + "region"      = "us-east-1"
+        }
+        unique_id             = "AROA4IGCA6UNVK5YMDOQD"
+    }
+
+  # module.js_eks_cluster.aws_iam_role.workers[0] will be created
+  + resource "aws_iam_role" "workers" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                      + Sid       = "EKSWorkerAssumeRole"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = true
+      + id                    = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = (known after apply)
+      + name_prefix           = "js_eks_cluster"
+      + path                  = "/"
+      + tags                  = {
+          + "cluster_id"  = "1234"
+          + "email"       = "madhan.rajendran@junglescout.com"
+          + "environment" = "devops-dev01"
+          + "owner"       = "madhan_rajendran"
+          + "region"      = "us-east-1"
+        }
+      + unique_id             = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      + role       = "js_eks_cluster20200609071957632300000001"
+    }
+
+  # module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSServicePolicy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+      + role       = "js_eks_cluster20200609071957632300000001"
+    }
+
+  # module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEC2ContainerRegistryReadOnly[0] will be created
+  + resource "aws_iam_role_policy_attachment" "workers_AmazonEC2ContainerRegistryReadOnly" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      + role       = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKSWorkerNodePolicy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "workers_AmazonEKSWorkerNodePolicy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      + role       = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKS_CNI_Policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "workers_AmazonEKS_CNI_Policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      + role       = (known after apply)
+    }
+
+  # module.js_eks_cluster.aws_launch_configuration.workers[0] will be created
+  + resource "aws_launch_configuration" "workers" {
+      + arn                         = (known after apply)
+      + associate_public_ip_address = false
+      + ebs_optimized               = false
+      + enable_monitoring           = true
+      + iam_instance_profile        = (known after apply)
+      + id                          = (known after apply)
+      + image_id                    = "ami-011b077a6cc247f40"
+      + instance_type               = "t2.small"
+      + key_name                    = (known after apply)
+      + name                        = (known after apply)
+      + name_prefix                 = "js_eks_cluster-js-clus-small"
+      + security_groups             = (known after apply)
+      + user_data_base64            = (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = (known after apply)
+          + device_name           = (known after apply)
+          + encrypted             = (known after apply)
+          + iops                  = (known after apply)
+          + no_device             = (known after apply)
+          + snapshot_id           = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + root_block_device {
+          + delete_on_termination = true
+          + encrypted             = false
+          + iops                  = 0
+          + volume_size           = 100
+          + volume_type           = "gp2"
+        }
+    }
+
+  # module.js_eks_cluster.aws_launch_configuration.workers[1] will be created
+  + resource "aws_launch_configuration" "workers" {
+      + arn                         = (known after apply)
+      + associate_public_ip_address = false
+      + ebs_optimized               = false
+      + enable_monitoring           = true
+      + iam_instance_profile        = (known after apply)
+      + id                          = (known after apply)
+      + image_id                    = "ami-011b077a6cc247f40"
+      + instance_type               = "t2.medium"
+      + key_name                    = (known after apply)
+      + name                        = (known after apply)
+      + name_prefix                 = "js_eks_cluster-js-clus-medium"
+      + security_groups             = (known after apply)
+      + user_data_base64            = (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = (known after apply)
+          + device_name           = (known after apply)
+          + encrypted             = (known after apply)
+          + iops                  = (known after apply)
+          + no_device             = (known after apply)
+          + snapshot_id           = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + root_block_device {
+          + delete_on_termination = true
+          + encrypted             = false
+          + iops                  = 0
+          + volume_size           = 100
+          + volume_type           = "gp2"
+        }
+    }
+
+  # module.js_eks_cluster.aws_security_group.workers[0] will be created
+  + resource "aws_security_group" "workers" {
+      + arn                    = (known after apply)
+      + description            = "Security group for all nodes in the cluster."
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = (known after apply)
+      + name_prefix            = "js_eks_cluster"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name"                                 = "js_eks_cluster-eks_worker_sg"
+          + "cluster_id"                           = "1234"
+          + "email"                                = "madhan.rajendran@junglescout.com"
+          + "environment"                          = "devops-dev01"
+          + "kubernetes.io/cluster/js_eks_cluster" = "owned"
+          + "owner"                                = "madhan_rajendran"
+          + "region"                               = "us-east-1"
+        }
+      + vpc_id                 = "vpc-050cc1ee952e793ee"
+    }
+
+  # module.js_eks_cluster.aws_security_group_rule.cluster_https_worker_ingress[0] will be created
+  + resource "aws_security_group_rule" "cluster_https_worker_ingress" {
+      + description              = "Allow pods to communicate with the EKS cluster API."
+      + from_port                = 443
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = "sg-000cb647d2612ba5d"
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 443
+      + type                     = "ingress"
+    }
+
+  # module.js_eks_cluster.aws_security_group_rule.workers_egress_internet[0] will be created
+  + resource "aws_security_group_rule" "workers_egress_internet" {
+      + cidr_blocks              = [
+          + "0.0.0.0/0",
+        ]
+      + description              = "Allow nodes all egress to the Internet."
+      + from_port                = 0
+      + id                       = (known after apply)
+      + protocol                 = "-1"
+      + security_group_id        = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 0
+      + type                     = "egress"
+    }
+
+  # module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster[0] will be created
+  + resource "aws_security_group_rule" "workers_ingress_cluster" {
+      + description              = "Allow workers pods to receive communication from the cluster control plane."
+      + from_port                = 1025
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = (known after apply)
+      + self                     = false
+      + source_security_group_id = "sg-000cb647d2612ba5d"
+      + to_port                  = 65535
+      + type                     = "ingress"
+    }
+
+  # module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster_https[0] will be created
+  + resource "aws_security_group_rule" "workers_ingress_cluster_https" {
+      + description              = "Allow pods running extension API servers on port 443 to receive communication from cluster control plane."
+      + from_port                = 443
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = (known after apply)
+      + self                     = false
+      + source_security_group_id = "sg-000cb647d2612ba5d"
+      + to_port                  = 443
+      + type                     = "ingress"
+    }
+
+  # module.js_eks_cluster.aws_security_group_rule.workers_ingress_self[0] will be created
+  + resource "aws_security_group_rule" "workers_ingress_self" {
+      + description              = "Allow node to communicate with each other."
+      + from_port                = 0
+      + id                       = (known after apply)
+      + protocol                 = "-1"
+      + security_group_id        = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 65535
+      + type                     = "ingress"
+    }
+
+  # module.js_eks_cluster.kubernetes_config_map.aws_auth[0] will be created
+  + resource "kubernetes_config_map" "aws_auth" {
+      + data = (known after apply)
+      + id   = (known after apply)
+
+      + metadata {
+          + generation       = (known after apply)
+          + name             = "aws-auth"
+          + namespace        = "kube-system"
+          + resource_version = (known after apply)
+          + self_link        = (known after apply)
+          + uid              = (known after apply)
+        }
+    }
+
+  # module.js_eks_cluster.local_file.kubeconfig[0] will be created
+  + resource "local_file" "kubeconfig" {
+      + content              = (known after apply)
+      + directory_permission = "0755"
+      + file_permission      = "0644"
+      + filename             = "./kubeconfig_js_eks_cluster"
+      + id                   = (known after apply)
+    }
+
+  # module.js_eks_cluster.null_resource.wait_for_cluster[0] will be created
+  + resource "null_resource" "wait_for_cluster" {
+      + id = (known after apply)
+    }
+
+  # module.js_eks_cluster.random_pet.workers[0] will be created
+  + resource "random_pet" "workers" {
+      + id        = (known after apply)
+      + keepers   = (known after apply)
+      + length    = 2
+      + separator = "-"
+    }
+
+  # module.js_eks_cluster.random_pet.workers[1] will be created
+  + resource "random_pet" "workers" {
+      + id        = (known after apply)
+      + keepers   = (known after apply)
+      + length    = 2
+      + separator = "-"
+    }
+
+Plan: 24 to add, 1 to change, 2 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+module.js_eks_cluster.aws_iam_role.cluster[0]: Modifying... [id=js_eks_cluster20200609071957632300000001]
+module.js_eks_cluster.aws_iam_role.cluster[0]: Modifications complete after 1s [id=js_eks_cluster20200609071957632300000001]
+module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy[0]: Creating...
+module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy[0]: Creating...
+module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy[0]: Creation complete after 0s [id=js_eks_cluster20200609071957632300000001-20200610035726904600000001]
+module.js_eks_cluster.aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy[0]: Creation complete after 0s [id=js_eks_cluster20200609071957632300000001-20200610035726911600000002]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Creating...
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [1m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [2m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [3m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [4m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [5m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [6m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [7m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [8m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m40s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [9m50s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [10m0s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [10m10s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [10m20s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Still creating... [10m30s elapsed]
+module.js_eks_cluster.aws_eks_cluster.this[0]: Creation complete after 10m32s [id=js_eks_cluster]
+module.js_eks_cluster.null_resource.wait_for_cluster[0]: Creating...
+module.js_eks_cluster.aws_iam_role.workers[0]: Creating...
+module.js_eks_cluster.aws_security_group.workers[0]: Creating...
+module.js_eks_cluster.null_resource.wait_for_cluster[0]: Provisioning with 'local-exec'...
+module.js_eks_cluster.data.template_file.userdata[0]: Refreshing state...
+module.js_eks_cluster.data.template_file.userdata[1]: Refreshing state...
+module.js_eks_cluster.null_resource.wait_for_cluster[0] (local-exec): Executing: ["/bin/sh" "-c" "for i in `seq 1 60`; do wget --no-check-certificate -O - -q $ENDPOINT/healthz >/dev/null && exit 0 || true; sleep 5; done; echo TIMEOUT && exit 1"]
+module.js_eks_cluster.local_file.kubeconfig[0]: Creating...
+
+module.js_eks_cluster.local_file.kubeconfig[0]: Creation complete after 0s [id=896eae9cf86bd4a324cb00d1b7b0d758d316fa36]
+module.js_eks_cluster.aws_iam_role.workers[0]: Creation complete after 0s [id=js_eks_cluster20200610040758729600000003]
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEC2ContainerRegistryReadOnly[0]: Creating...
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKS_CNI_Policy[0]: Creating...
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKSWorkerNodePolicy[0]: Creating...
+module.js_eks_cluster.aws_iam_instance_profile.workers[0]: Creating...
+module.js_eks_cluster.aws_iam_instance_profile.workers[1]: Creating...
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKSWorkerNodePolicy[0]: Creation complete after 1s [id=js_eks_cluster20200610040758729600000003-20200610040759360600000007]
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEKS_CNI_Policy[0]: Creation complete after 1s [id=js_eks_cluster20200610040758729600000003-20200610040759362600000008]
+module.js_eks_cluster.aws_iam_role_policy_attachment.workers_AmazonEC2ContainerRegistryReadOnly[0]: Creation complete after 1s [id=js_eks_cluster20200610040758729600000003-20200610040759391600000009]
+module.js_eks_cluster.aws_iam_instance_profile.workers[0]: Creation complete after 1s [id=js_eks_cluster20200610040759154800000005]
+module.js_eks_cluster.aws_iam_instance_profile.workers[1]: Creation complete after 1s [id=js_eks_cluster20200610040759154800000006]
+module.js_eks_cluster.aws_security_group.workers[0]: Creation complete after 2s [id=sg-0d7d3b01a7d3b03af]
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster[0]: Creating...
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster_https[0]: Creating...
+module.js_eks_cluster.aws_security_group_rule.workers_egress_internet[0]: Creating...
+module.js_eks_cluster.aws_security_group_rule.cluster_https_worker_ingress[0]: Creating...
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_self[0]: Creating...
+module.js_eks_cluster.aws_launch_configuration.workers[1]: Creating...
+module.js_eks_cluster.aws_launch_configuration.workers[0]: Creating...
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster_https[0]: Creation complete after 1s [id=sgrule-1960295258]
+module.js_eks_cluster.aws_security_group_rule.cluster_https_worker_ingress[0]: Creation complete after 1s [id=sgrule-861694267]
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_cluster[0]: Creation complete after 2s [id=sgrule-3451552297]
+module.js_eks_cluster.aws_security_group_rule.workers_egress_internet[0]: Creation complete after 3s [id=sgrule-2189821346]
+module.js_eks_cluster.aws_security_group_rule.workers_ingress_self[0]: Creation complete after 4s [id=sgrule-3868983122]
+module.js_eks_cluster.aws_launch_configuration.workers[1]: Creation complete after 8s [id=js_eks_cluster-js-clus-medium2020061004080176520000000a]
+module.js_eks_cluster.aws_launch_configuration.workers[0]: Still creating... [10s elapsed]
+module.js_eks_cluster.aws_launch_configuration.workers[0]: Creation complete after 12s [id=js_eks_cluster-js-clus-small2020061004080180320000000b]
+module.js_eks_cluster.random_pet.workers[0]: Creating...
+module.js_eks_cluster.random_pet.workers[1]: Creating...
+module.js_eks_cluster.random_pet.workers[1]: Creation complete after 0s [id=elegant-labrador]
+module.js_eks_cluster.random_pet.workers[0]: Creation complete after 0s [id=one-antelope]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Creating...
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Creating...
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Still creating... [10s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [10s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Still creating... [20s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [20s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Still creating... [30s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [30s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Still creating... [40s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [40s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Still creating... [50s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [50s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[0]: Creation complete after 52s [id=js_eks_cluster-js-clus-small2020061004081352260000000c]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [1m0s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [1m10s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [1m20s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [1m30s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Still creating... [1m40s elapsed]
+module.js_eks_cluster.aws_autoscaling_group.workers[1]: Creation complete after 1m43s [id=js_eks_cluster-js-clus-medium2020061004081352260000000d]

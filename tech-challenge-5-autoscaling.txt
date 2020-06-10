@@ -1,0 +1,15 @@
+Describe how would you set up the env so it scales automatically when response time drops below 20ms.
+
+Have only one autoscaling configuration in which we can have multiple profiles with more autoscaling rules/policies
+
+Application can have a threshold defined for the expected traffic throughput rate. If it falls below a specified threshold (20ms), 
+the autoscaling congiuration in the EKS cluster will scale based on the specified maximum pods/containers/nodes. When the threshold is back to normal,
+it will scale down to desired numbers.
+
+Always we need to ensure the max and min values are different and have adequate margin between them.
+
+Also, when someone manaually change the desired counts to a value above or below the maximum, the autoscaling config should scale back to the desired counts.
+
+Setting diagnostic metrics properly will help autoscaling to be appropriate.
+
+Configuration for notifying the autoscaling operations.

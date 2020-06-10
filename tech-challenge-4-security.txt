@@ -1,0 +1,17 @@
+Describe how you would protect this app from being accessed by unauthorized users.
+
+Firewalls
+Whitelisting only customers IPs or blocking the IPs known for any DDOS attacks
+Single sign-on (SSO)
+Using IAM policies manage users permissions 
+- Rotate access keys every 30 days
+- Multifactor authenctication
+- Strong password policies and set it to expire every 90 days
+Setup metrics and alert on any abnormal activities by users
+Malware protection
+Keep systems up-to-date
+- Compliance monitoring would help on non-compliant resources
+- Update OS patches after every release
+
+
+
